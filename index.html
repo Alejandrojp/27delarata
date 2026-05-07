@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Clínica ALE">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" id="meta-theme-color" content="#d1c4e9">
+    <link rel="icon" href="clinica.jpg">
+    <link rel="apple-touch-icon" href="clinica.jpg">
+
+    <title>Clínica ALE - Oficial</title>
+    <link rel="preload" href="foto.jpg" as="image">    
+    <link rel="preload" href="whatsapp.jpg" as="image">
+    <link rel="preload" href="fotos.jpg" as="image">
+    <link rel="preload" href="notas.jpg" as="image">
+    <link rel="preload" href="santander.jpg" as="image">
+    <link rel="preload" href="spotify.jpg" as="image">
+    <link rel="preload" href="strava.jpg" as="image">
+    <link rel="preload" href="bet365.jpg" as="image">
+    <link rel="preload" href="telefono.jpg" as="image">
+    <link rel="preload" href="safari.jpg" as="image">
+    <link rel="preload" href="mail.jpg" as="image">
+    <link rel="preload" href="ajustes.jpg" as="image">
+    <link rel="preload" href="clinica.jpg" as="image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="blackout-overlay" style="position:fixed; inset:0; background:black; opacity:0; pointer-events:none; z-index:9000; transition:opacity 0.4s ease;"></div>
+
+    <div id="fullscreen-prank-alert">
+        <div id="prank-shake-container">
+            <div style="font-size: 70px; margin-bottom: 10px;">🚫</div>
+            <div class="glitch-text">ERROR CRÍTICO</div>
+            <p style="font-size: 20px; font-weight: 600; text-shadow: 1px 1px 0px #000;">¡FONDOS INSUFICIENTES PARA JAMÓN!</p>
+            <p style="font-size: 15px; margin-top: 15px; color: #ffebee;">Volviendo a la cruda realidad de la hipoteca...</p>
+        </div>
+    </div>
+
+    <div id="incoming-call-ui" class="hidden">
+        <div>
+            <div class="caller-id shake-text">Banco Santander</div>
+            <div class="caller-sub">Revisión Hipoteca</div>
+        </div>
+        <div class="call-actions">
+            <div class="call-btn-container">
+                <button class="call-btn decline-btn" onclick="declineCall()">☎️</button>
+                <span>Rechazar</span>
+            </div>
+            <div class="call-btn-container">
+                <button class="call-btn accept-btn" onclick="acceptCall()">☎️</button>
+                <span>Aceptar</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="paleta-call-ui" class="hidden">
+        <div>
+            <div class="caller-id shake-text" style="font-size:24px;">Alberto Arrazubi (Reformas)</div>
+            <div class="caller-sub">Llamada entrante</div>
+        </div>
+        <div class="call-actions">
+            <div class="call-btn-container">
+                <button class="call-btn decline-btn" onclick="declinePaleta()">☎️</button>
+                <span>Rechazar</span>
+            </div>
+            <div class="call-btn-container">
+                <button class="call-btn accept-btn" onclick="acceptPaleta()">☎️</button>
+                <span>Aceptar</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="birthday-countdown-ui" class="hidden">
+        <div id="bday-content">
+            <div style="font-size:60px; margin-bottom:10px;">🎂</div>
+            <div style="font-size:20px; font-weight:700; color:white; margin-bottom:5px;">ALERTA DEL SISTEMA</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.8); margin-bottom:20px; padding: 0 20px; line-height:1.6;">Llevas <strong>27 años</strong> consumiendo recursos del planeta sin licencia. Renueva antes de que expire el plazo.</div>
+            <div id="bday-timer" style="font-size:64px; font-weight:900; color:white; font-family:monospace; text-shadow: 0 0 20px rgba(255,255,255,0.5);">10</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.6); margin-top:5px;">segundos para el embargo</div>
+            <button onclick="closeBirthdayCountdown()" style="margin-top:25px; background:white; color:#9c27b0; border:none; padding:12px 30px; border-radius:20px; font-weight:700; font-size:14px; cursor:pointer;">Renovar Licencia (400€)</button>
+        </div>
+    </div>
+
+    <div id="invoice-modal" class="overlay-modal">
+        <div class="receipt">
+            <div class="receipt-header">
+                <h3>CLÍNICA ALE S.A.</h3>
+                <p>NIF: B-28049927</p>
+                <p>C/ Juventud Perdida, 27</p>
+            </div>
+            <div class="receipt-body">
+                <div class="receipt-row"><span>Test Psicotécnico</span><span>150.00€</span></div>
+                <div class="receipt-row"><span>Tratamiento Vértigo</span><span>200.00€</span></div>
+                <div class="receipt-row"><span>Multa por Ruiditos</span><span>50.00€</span></div>
+                <div class="receipt-row"><span>Deuda Bet365</span><span>100.00€</span></div>
+                <br>
+                <div class="receipt-row"><span>Subtotal Cargos</span><span>500.00€</span></div>
+                <div class="receipt-row"><span>Sueldo Camiones</span><span>-100.00€</span></div>
+            </div>
+            <div class="receipt-total">
+                <span>TOTAL A PAGAR</span><span>400.00€</span>
+            </div>
+            <div class="receipt-footer">
+                <p>¡FELICES 27!</p>
+                <button id="troll-pay-btn" class="close-btn-modal" style="background:#34c759; margin-bottom: 5px; position:relative; z-index:10; transition:transform 0.15s ease;" ontouchstart="dodgeButton(this)" onmouseover="dodgeButton(this)" onclick="catchButton()">Pagar 400.00€ (Bizum)</button>
+                <button class="close-btn-modal" onclick="closeModal('invoice-modal')" style="font-family:'Courier New', Courier, monospace;">CERRAR TICKET</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="medical-modal" class="overlay-modal">
+        <div class="medical-paper">
+            <div class="med-header">
+                <div class="med-logo">⚕️</div>
+                <div>
+                    <h3 class="med-title">INFORME MÉDICO OFICIAL</h3>
+                    <p style="margin:0; font-size:11px; color:#666;">Clínica ALE - Dpto. de Salud Mental</p>
+                </div>
+            </div>
+            <div class="med-body">
+                <p><strong>Paciente:</strong> Señora Propietaria (27 años)</p>
+                <p><strong>Diagnóstico:</strong> Síndrome de Estrés Hipotecario Agudo, acompañado de contracturas severas por montaje de KALLAX y trauma emocional inducido por cuotas del Bet365.</p>
+                <p><strong>Tratamiento:</strong> 1 Dosis única de adrenalina extrema vía aérea. Se recomienda mantener alejada temporalmente de trámites, ruiditos bucales y bichos.</p>
+            </div>
+            <div class="med-signature">
+                Fdo: Dr. El Mejor Hermano
+            </div>
+            <button class="close-btn-modal" style="background:#2980b9;" onclick="closeModal('medical-modal')">Guardar en la carpeta de AA Mamá</button>
+        </div>
+    </div>
+
+    <div id="phone-wrapper">
+        <div id="camera-flash"></div>
+
+        <div id="boot-screen">
+            <div id="boot-logo">🍎</div>
+            <div id="boot-bar-wrap"><div id="boot-bar"></div></div>
+        </div>
+
+        <div id="ios-status-bar" class="status-light">
+            <span id="sb-time">00:00</span>
+            <div class="status-right">
+                <svg class="icon-signal" viewBox="0 0 18 12" width="16" height="11">
+                    <rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/>
+                    <rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/>
+                    <rect x="10" y="2" width="3" height="10" rx="1" fill="currentColor"/>
+                    <rect x="15" y="0" width="3" height="12" rx="1" fill="currentColor" opacity="0.4"/>
+                </svg>
+                <svg class="icon-wifi" viewBox="0 0 16 12" width="15" height="11">
+                    <path d="M8 12L0 3.5C2.5 1.2 5.2 0 8 0C10.8 0 13.5 1.2 16 3.5L8 12Z" fill="currentColor"/>
+                </svg>
+                <div class="battery-wrapper" id="battery-status">
+                    <span id="battery-text">15%</span>
+                    <div class="battery-icon">
+                        <div id="battery-fill" style="width: 15%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notification-center">
+            <div class="nc-handle"></div>
+            <div id="nc-time">00:00</div>
+            <div id="nc-date">Lunes, 1 de Enero</div>
+            
+            <div class="nc-notif" onclick="ncAlert('Reformas', 'El paleta ha subido un TikTok bailando en tu salón. Cobra igual.')">
+                <div class="notif-icon" style="background-image: url('whatsapp.jpg');"></div>
+                <div class="notif-text"><h4>Alberto Arrazubi (Reformas)</h4><p>Presupuesto ampliado un 40% (imprevistos).</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('Strava', 'No te engañes, has ido a comprar el pan y te has vuelto a sentar.')">
+                <div class="notif-icon" style="background-image: url('strava.jpg');"></div>
+                <div class="notif-text"><h4>Strava</h4><p>¡Actividad completada! Ritmo: 8:45 min/km. ¿Ibas andando?</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('mi niño ❤️', 'Tranquila, con 400 camiones más pagáis la cuota del mes.')">
+                <div class="notif-icon" style="background-image: url('whatsapp.jpg');"></div>
+                <div class="notif-text"><h4>mi niño ❤️</h4><p>Me voy a descargar camiones para pagar la hipoteca. Te quiero.</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('Santander', 'Has mirado un escaparate. Te cobramos 0,50€ de comisión.')">
+                <div class="notif-icon" style="background-image: url('santander.jpg');"></div>
+                <div class="notif-text"><h4>Santander</h4><p>Gasto detectado: 3,50€. Alerta de nivel RATA activada.</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('Bet365', 'Otra combinada a la basura. A este paso vendes el piso.')">
+                <div class="notif-icon" style="background-image: url('bet365.jpg');"></div>
+                <div class="notif-text"><h4>Bet365</h4><p>Apuesta cerrada. Has perdido 100,00€. Suerte la próxima vez.</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('Wallapop', 'Encima te pide que se lo lleves a su casa. Bloqueado por rata.')">
+                <div class="notif-icon" style="background-image: url('wallapop.jpg');"></div>
+                <div class="notif-text"><h4>Wallapop</h4><p>Alguien te ofrece 5,50€ y un chicle por el vestido.</p></div>
+            </div>
+            <div class="nc-notif" onclick="ncAlert('Idealista', 'Lástima, no tienes sueldo para esto.')">
+                <div class="notif-icon" style="background-image: url('idealista.jpg');"></div>
+                <div class="notif-text"><h4>Idealista</h4><p>¡Bajada de precio! Un piso el doble de grande y reformado acaba de bajar 50.000€ en tu calle.</p></div>
+            </div>
+        </div>
+
+        <canvas id="confetti-canvas"></canvas>
+
+        <div id="custom-alert">
+            <h3 id="alert-title">⚠️ ERROR DE SISTEMA</h3>
+            <p id="alert-message">Mensaje de error genérico.</p>
+        </div>
+
+        <div class="notif-container">
+            <div id="n1" class="ios-notif" onclick="showCustomAlert('Reformas', 'El paleta ha subido un TikTok bailando en tu salón. Cobra igual.')"><div class="notif-icon" style="background-image: url('whatsapp.jpg');"></div><div class="notif-text"><h4>Alberto Arrazubi (Reformas)</h4><p>Presupuesto ampliado un 40% (imprevistos).</p></div></div>
+            <div id="n2" class="ios-notif" onclick="showCustomAlert('Strava', 'No te engañes, has ido a comprar el pan y te has vuelto a sentar.')"><div class="notif-icon" style="background-image: url('strava.jpg');"></div><div class="notif-text"><h4>Strava</h4><p>¡Actividad completada! Ritmo: 8:45 min/km. ¿Ibas andando?</p></div></div>
+            <div id="n3" class="ios-notif" onclick="showCustomAlert('mi niño ❤️', 'Tranquila, con 400 camiones más pagáis la cuota del mes.')"><div class="notif-icon" style="background-image: url('whatsapp.jpg');"></div><div class="notif-text"><h4>mi niño ❤️</h4><p>Me voy a descargar camiones para pagar la hipoteca. Te quiero.</p></div></div>
+            <div id="n4" class="ios-notif" onclick="showCustomAlert('Santander', 'Has mirado un escaparate. Te cobramos 0,50€ de comisión.')"><div class="notif-icon" style="background-image: url('santander.jpg');"></div><div class="notif-text"><h4>Santander</h4><p>Gasto detectado: 3,50€. Alerta de nivel RATA activada.</p></div></div>
+            <div id="n5" class="ios-notif" onclick="showCustomAlert('Bet365', 'Otra combinada a la basura. A este paso vendes el piso.')"><div class="notif-icon" style="background-image: url('bet365.jpg');"></div><div class="notif-text"><h4>Bet365</h4><p>Apuesta cerrada. Has perdido 100,00€. Suerte la próxima vez.</p></div></div>
+            <div id="n6" class="ios-notif" onclick="showCustomAlert('Wallapop', 'Encima te pide que se lo lleves a su casa. Bloqueado por rata.')"><div class="notif-icon" style="background-image: url('wallapop.jpg') ;"></div><div class="notif-text"><h4>Wallapop</h4><p>Alguien te ofrece 5,50€ y un chicle por el vestido.</p></div></div>
+            <div id="n7" class="ios-notif" onclick="showCustomAlert('Idealista', 'Lástima, no tienes sueldo para esto.')"><div class="notif-icon" style="background-image: url('idealista.jpg');"></div><div class="notif-text"><h4>Idealista</h4><p>¡Bajada de precio! Un piso el doble de grande y reformado acaba de bajar 50.000€ en tu calle.</p></div></div>
+        </div>
+
+        <div id="lock-screen">
+            <div id="lock-icon">🔒</div>
+            <div id="ios-clock">00:00</div>
+            <div id="ios-date">Cargando fecha...</div>
+            
+            <p id="face-id-btn" class="pulse-btn" style="color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 15px; cursor: pointer; padding: 5px 15px; border: 1px solid rgba(255,255,255,0.5); border-radius: 20px;" onclick="triggerFaceID()">[ Toca para escanear Face ID ]</p>
+
+            <div class="passcode-container">
+                <p id="passcode-hint" class="hidden" style="color:white; font-weight:300; font-size:14px; margin-bottom: 0;">Pista: Tu cumpleaños (DDMMAA)</p>
+                <div class="dots" id="dots-box">
+                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                </div>
+                <div class="keypad">
+                    <div class="key" onclick="tap(1)"><span>1</span><span>&nbsp;</span></div>
+                    <div class="key" onclick="tap(2)"><span>2</span><span>ABC</span></div>
+                    <div class="key" onclick="tap(3)"><span>3</span><span>DEF</span></div>
+                    <div class="key" onclick="tap(4)"><span>4</span><span>GHI</span></div>
+                    <div class="key" onclick="tap(5)"><span>5</span><span>JKL</span></div>
+                    <div class="key" onclick="tap(6)"><span>6</span><span>MNO</span></div>
+                    <div class="key" onclick="tap(7)"><span>7</span><span>PQRS</span></div>
+                    <div class="key" onclick="tap(8)"><span>8</span><span>TUV</span></div>
+                    <div class="key" onclick="tap(9)"><span>9</span><span>WXYZ</span></div>
+                    <div class="key" style="grid-column: 2" onclick="tap(0)"><span>0</span><span>&nbsp;</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="home-screen" class="hidden">
+            <div id="nc-hint" class="hidden">Desliza hacia abajo ⬇️</div>
+            <div class="app-grid">
+                <div class="app-item" onclick="fakeAppAlert('WhatsApp')">
+                    <div class="app-icon" style="background-image: url('whatsapp.jpg');"><div class="app-badge" style="border-color: #6d6bc1;">3</div></div>
+                    <div class="app-name">WhatsApp</div>
+                </div>
+                
+                <div class="app-item" onclick="fakeAppAlert('Fotos')">
+                    <div class="app-icon" style="background-image: url('fotos.jpg');"></div>
+                    <div class="app-name">Fotos</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Notas')">
+                    <div class="app-icon" style="background-image: url('notas.jpg');"></div>
+                    <div class="app-name">Notas</div>
+                </div>
+                
+                <div class="app-item app-target" onclick="openRealApp()">
+                    <div class="app-icon" style="background-image: url('clinica.jpg'); background-size: cover; background-position: center; border: 2px solid white; box-shadow: 0 0 15px rgba(255,255,255,0.5);"></div>
+                    <div class="app-name" style="font-weight: bold; background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 5px;">Clínica ALE</div>
+                </div>
+                
+                <div class="app-item" onclick="fakeAppAlert('Santander')">
+                    <div class="app-icon" style="background-image: url('santander.jpg');"><div class="app-badge" style="border-color: #7155a9;">1</div></div>
+                    <div class="app-name">Santander</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Spotify')">
+                    <div class="app-icon" style="background-image: url('spotify.jpg');"></div>
+                    <div class="app-name">Spotify</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Strava')">
+                    <div class="app-icon" style="background-image: url('strava.jpg');"></div>
+                    <div class="app-name">Strava</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Bet365')">
+                    <div class="app-icon" style="background-image: url('bet365.jpg');"></div>
+                    <div class="app-name">Bet365</div>
+                </div>
+            </div>
+            
+            <div class="dock-container">
+                <div class="app-item" onclick="fakeAppAlert('Teléfono')">
+                    <div class="app-icon" style="background-image: url('telefono.jpg');"></div>
+                    <div class="app-name">Teléfono</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Safari')">
+                    <div class="app-icon" style="background-image: url('safari.jpg');"></div>
+                    <div class="app-name">Safari</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Mail')">
+                    <div class="app-icon" style="background-image: url('mail.jpg');"><div class="app-badge" style="border-color: #e5e5f5;">99+</div></div>
+                    <div class="app-name">Mail</div>
+                </div>
+                <div class="app-item" onclick="fakeAppAlert('Ajustes')">
+                    <div class="app-icon" style="background-image: url('ajustes.jpg');"></div>
+                    <div class="app-name">Ajustes</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="app-content">
+            <div class="card">
+                
+                <div id="prank-ui" class="fade-in">
+                    <div style="font-size: 55px; margin-bottom: 10px;">🥖</div>
+                    <h2 style="color: var(--lila-dark); margin-bottom: 5px; font-size: 20px;">¡REGALO DESBLOQUEADO!</h2>
+                    <span style="display: inline-block; background: #fff3e0; color: #e65100; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-bottom: 15px;">Promoción Exclusiva</span>
+                    
+                    <p style="font-size:14px; color:#555; line-height:1.6; margin-bottom: 25px;">Por tu cumpleaños, has recibido un <strong>Vale por un bocadillo de jamón en el Enrique Tomás</strong>.</p>
+                    <p style="font-size:11px; color:#999; margin-top:-15px; margin-bottom:25px;">* Bebida no incluida, no llega el presu.</p>
+
+                    <div id="prank-action">
+                        <button class="action-btn pulse-btn" style="background: #e65100; box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);" onclick="redeemSandwich()">Aceptar y Canjear 🤤</button>
+                    </div>
+
+                    <div id="prank-loading" class="hidden" style="margin-top: 20px;">
+                        <div class="spinner" style="border-left-color: #e65100;"></div>
+                        <p style="color: #666; font-size: 13px;">Procesando pedido de jamón del bueno...</p>
+                    </div>
+                </div>
+                
+                <div id="welcome-ui" class="hidden fade-in">
+                    <div style="font-size: 55px; margin-bottom: 10px;">🩺</div>
+                    <h2 style="color: var(--lila-dark); margin-bottom: 5px; font-size: 20px;">Clínica ALE</h2>
+                    <span style="display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-bottom: 15px;">✓ Identidad Confirmada</span>
+                    
+                    <p style="font-size:13px; color:#555; line-height:1.6; margin-bottom: 25px;">Bienvenida a tu evaluación anual de madurez de los 27 años. Este portal analizará tus niveles de estrés hipotecario, tolerancia a ruiditos y tendencias ahorrativas extremas.</p>
+                    
+                    <button class="action-btn pulse-btn" onclick="startCameraVerification()">Verificar Identidad 📸</button>
+                </div>
+
+                <div id="camera-ui" class="hidden fade-in">
+                    <div style="font-size: 55px; margin-bottom: 10px;">📸</div>
+                    <h2 style="color: var(--lila-dark); margin-bottom: 15px; font-size: 18px;">Verificación Biométrica</h2>
+                    
+                    <p style="font-size:13px; color:#555; line-height:1.6; margin-bottom: 20px;">Por motivos de seguridad, necesitamos comprobar que tu cara refleja la de una propietaria de 27 años estresada.</p>
+                    
+                    <div style="background:#f3e5f5; padding:15px; border-radius:15px; text-align:left; margin-bottom: 10px;">
+                        <p style="margin:0; font-size:12px; font-weight:600; color: var(--lila-dark);">Instrucciones:</p>
+                        <p style="margin:5px 0 0 0; font-size:12px;">Hazte un selfie mirando a cámara con cara de haber pagado el IBI.</p>
+                    </div>
+
+                    <label class="file-upload-wrapper" style="cursor: pointer;">
+                        <div class="action-btn pulse-btn" style="margin-top: 0;">Abrir Cámara</div>
+                        <input type="file" accept="image/*" capture="user" onchange="processPhoto(event)" style="display: none;">
+                    </label>
+                </div>
+
+                <div id="camera-loading-ui" class="hidden fade-in">
+                    <div class="scanner-container">
+                        <span id="scan-emoji">👩🏻‍💻</span>
+                        <div id="selfie-preview"></div>
+                        <div class="laser-line" id="laser"></div>
+                    </div>
+                    <h3 id="scan-title" style="color: var(--lila-dark); font-size:16px; transition: 0.3s;">Escaneando rostro...</h3>
+                    <p id="scan-desc" style="font-size:12px; color:#666; transition: 0.3s;">Buscando ojeras por la busqueda de diseños de piso y nivel de juventud restante...</p>
+                </div>
+
+                <div id="start-test-ui" class="hidden fade-in">
+                    <div style="font-size: 55px; margin-bottom: 10px;">📝</div>
+                    <h2 style="color: var(--lila-dark); margin-bottom: 15px; font-size: 18px;">Verificación Superada</h2>
+                    <p style="font-size:13px; color:#555; line-height:1.6; margin-bottom: 20px;">Hemos detectado un nivel de estrés compatible con la realización de este cuestionario.</p>
+                    <button class="action-btn pulse-btn" onclick="startQuiz()">Iniciar Cuestionario 🚀</button>
+                </div>
+
+                <div id="quiz-ui" class="hidden">
+                    <div class="progress-bar"><div id="fill"></div></div>
+                    <div id="question" class="q-title">Cargando...</div>
+                    <div id="options"></div>
+                </div>
+
+                <div id="loading-ui" class="hidden">
+                    <div class="spinner"></div>
+                    <h3 style="color: var(--lila-dark);">Analizando resultados...</h3>
+                    <p id="loading-text" style="color: #666; font-size: 13px;">Procesando traumas con muebles de IKEA...</p>
+                </div>
+                
+                <div id="minigame-ui" class="hidden" style="position: absolute; inset: 0; background: #0a0a0a; z-index: 9500; display: flex; flex-direction: column; align-items: center; color: #34c759; font-family: monospace; padding-top: calc(env(safe-area-inset-top, 40px) + 20px);">
+                    <h3 style="text-shadow: 0 0 10px #34c759; margin-bottom: 5px; text-align: center; padding: 0 20px;">⚠️ PROTOCOLO DE DESBLOQUEO</h3>
+                    <p style="font-size: 12px; color: #aaa; text-align: center; margin-top: 0; padding: 0 30px;">Recupera 10 billetes de la hipoteca para financiar los resultados</p>
+                    <h1 id="game-score" style="font-size: 60px; margin: 10px 0; text-shadow: 0 0 15px rgba(52,199,89,0.5);">0/10</h1>
+                    <div id="game-area" style="position: relative; width: 100%; height: 100%; overflow: hidden; touch-action: none;"></div>
+                </div>
+                
+                <div id="stats-ui" class="hidden">
+                    <h2 style="color: var(--lila-dark); margin-top: 0;">Análisis Psicológico</h2>
+                    <p style="font-size: 12px; color: #666; margin-bottom: 25px;">Informe generado para la nueva propietaria.</p>
+                    
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Estrés (Hipoteca + Obra) 🏚️</span><span id="p-estres">0%</span></div>
+                        <div class="stat-bg"><div class="stat-fill" id="bar-estres"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Modo "Rata" Suprema 💸</span><span id="p-rata">0%</span></div>
+                        <div class="stat-bg"><div class="stat-fill" id="bar-rata"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Riesgo de Homicidio (Ruiditos) 🤬</span><span id="p-miso">0%</span></div>
+                        <div class="stat-bg"><div class="stat-fill" id="bar-miso" style="background: linear-gradient(90deg, #ff9a9e, #fecfef);"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Supervivencia a Bichos 🐛</span><span id="p-cuca">0%</span></div>
+                        <div class="stat-bg"><div class="stat-fill" id="bar-cuca" style="background: #e0e0e0;"></div></div>
+                    </div>
+
+                    <button class="action-btn" onclick="finish()">Ver mi Tratamiento 🎁</button>
+                </div>
+
+                <div id="result-ui" class="hidden">
+                    <div id="res-icon" style="font-size: 60px; margin-bottom: 15px;">🎁</div>
+                    <h2 id="res-title" style="color: var(--lila-vivid); margin: 0;">¡SORPRESA!</h2>
+                    <p id="res-desc" style="font-size: 14px; color: #666; line-height: 1.5; margin: 15px 0;"></p>
+                    
+                    <div id="carta-tab" onclick="toggleCarta()">📜 Leer Carta</div>
+
+                    <div id="carta-hermano">
+                        <div class="carta-content">
+                            <div style="font-size:10px; color:#bbb; text-align:right; margin-bottom:12px; font-family:'Courier New',monospace;">Barcelona, <span id="carta-fecha"></span></div>
+                            <p style="font-family:'Georgia',serif; font-size:14px; line-height:1.9; color:#3a3a3a; margin:0 0 12px;">Ale,</p>
+                            <p style="font-family:'Georgia',serif; font-size:13px; line-height:1.9; color:#3a3a3a; margin:0 0 10px;">Si has llegado hasta aquí, enhorabuena. Has sobrevivido al test, al paleta, al Santander y a tu propio nivel de <em>rata</em>. Eso ya dice mucho de ti.</p>
+                            
+                            <p id="texto-regalo-dinamico" style="font-family:'Georgia',serif; font-size:13px; line-height:1.9; color:#3a3a3a; margin:0 0 10px;"></p>
+                            
+                            <p style="font-family:'Georgia',serif; font-size:13px; line-height:1.9; color:#3a3a3a; margin:0 0 16px;">Felices 27, hermana. Te quiero mucho.&nbsp;❤️</p>
+                            
+                            <div style="text-align:right; margin-top: 15px;">
+                                <svg width="160" height="70" viewBox="0 0 160 70" style="overflow:visible; transform: rotate(-4deg);">
+                                    <path d="M 20,55 L 45,15 L 20,45 L 85,45" stroke="#1a237e" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M 45,45 C 40,65 60,70 65,55" stroke="#1a237e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                    <path d="M 65,55 C 75,25 110,15 125,30 C 140,45 110,60 145,45 C 155,40 160,45 145,55 Z" stroke="#1a237e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M 15,50 C 60,55 100,50 150,45" stroke="#1a237e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+                                </svg>
+                                <div style="font-family:'Georgia',serif; font-size:12px; color:#888; margin-top:5px; font-style:italic;">El mejor hermano del mundo</div>
+                            </div>
+                            
+                            <button class="action-btn secondary-btn" style="background:#e8d5a3; color:#333; font-size:13px; margin-top:20px; border: 1px solid #d4c08f;" onclick="toggleCarta()">Cerrar Carta 📜</button>
+                        </div>
+                    </div>
+
+                    <div style="background:#f3e5f5; padding:15px; border-radius:15px; margin-bottom: 20px; text-align:left">
+                        <p style="margin:0; font-size:12px; font-weight:600; color: var(--lila-dark);">INSTRUCCIONES FINALES:</p>
+                        <p style="margin:5px 0; font-size:12px">1. Elige el <strong>fin de semana</strong> que prefieras.</p>
+                        <p style="margin:5px 0; font-size:12px">2. Haz clic en el botón verde para reclamar tu regalo.</p>
+                    </div>
+
+                    <a id="whatsapp-btn" href="#" target="_blank" class="action-btn" style="background:#25D366;">
+                        <span style="font-size: 18px;">📲</span> Reclamar Regalo
+                    </a>
+
+                    <button class="action-btn secondary-btn" style="font-size:13px; background:#5856d6; margin-top:10px;" onclick="compartirResultado()">📤 Compartir mi Diagnóstico</button>
+                    
+                    <button class="action-btn secondary-btn" style="font-size:12px" onclick="openModal('medical-modal')">Descargar Informe Médico</button>
+                    <button class="action-btn secondary-btn" style="font-size:11px; background:#666; margin-top: 5px;" onclick="openModal('invoice-modal')">Ver Factura de la Clínica</button>
+                </div>
+
+            </div>
+        </div>
+        
+        <div id="fake-santander-ui" class="hidden" style="position: fixed; inset: 0; background: white; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 10%;">
+            <div style="font-size: 60px; font-weight: 900; color: #ff3b30; margin-bottom: 20px;">S</div>
+            <p style="color: #666; font-size: 14px; margin-bottom: 5px;">Saldo actual</p>
+            <h1 style="color: #333; font-size: 35px; margin: 0;">-460.000,00 €</h1>
+            <p style="color: #ff3b30; font-size: 12px; margin-top: 10px; font-weight: bold;">⚠️ Riesgo de embargo inminente</p>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
